@@ -10,7 +10,7 @@ export function useGetWalletBalance(walletAddress?: string, update?: boolean) {
         if (!walletAddress) return;
         setLoading(true);
         getWalletBalance(walletAddress)
-            .then((response: any) => {
+            .then((response: bigint) => {
                 setBalance(response);
             })
             .catch((error) => {

@@ -11,7 +11,7 @@ export function useGetAmountWrappedToken(signer?: JsonRpcSigner | null, update?:
         if (!signer) return;
         setLoading(true);
         getAmountWrappedToken(signer)
-            .then((response: any) => {
+            .then((response: bigint) => {
                 setAmountWrappedToken(response);
             })
             .catch((error) => {
