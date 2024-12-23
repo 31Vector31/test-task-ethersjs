@@ -7,7 +7,7 @@ export function useGetWalletBalance(walletAddress: string, update?: boolean) {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        if(!walletAddress) return;
+        if (!walletAddress) return;
         setLoading(true);
         getWalletBalance(walletAddress)
             .then((response: any) => {

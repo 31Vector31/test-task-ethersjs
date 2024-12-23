@@ -8,7 +8,7 @@ export function useGetAmountWrappedToken(signer: JsonRpcSigner, update?: boolean
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        if(!signer) return;
+        if (!signer) return;
         setLoading(true);
         getAmountWrappedToken(signer)
             .then((response: any) => {

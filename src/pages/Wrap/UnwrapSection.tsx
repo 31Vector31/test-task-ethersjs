@@ -36,7 +36,11 @@ interface UnwrapSectionProps {
 
 const UnwrapSection = ({rerender, setRerender}: UnwrapSectionProps) => {
     const {signer, connect} = useEthereum();
-    const {amountWrappedToken, loading: amountWrappedTokenLoading, error: amountWrappedTokenError} = useGetAmountWrappedToken(signer, rerender);
+    const {
+        amountWrappedToken,
+        loading: amountWrappedTokenLoading,
+        error: amountWrappedTokenError
+    } = useGetAmountWrappedToken(signer, rerender);
     const {customFormatUnits, formatNumberOrString, customParseUnits} = useFormatter();
     const notifications = useNotifications();
 

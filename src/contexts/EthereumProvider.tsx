@@ -11,7 +11,7 @@ interface EthereumProviderProps {
     children: ReactNode,
 }
 
-const EthereumProvider = ({ children }:EthereumProviderProps) => {
+const EthereumProvider = ({children}: EthereumProviderProps) => {
     const [signer, setSigner] = useState<JsonRpcSigner | null>(null);
 
     useEffect(() => {
@@ -19,6 +19,7 @@ const EthereumProvider = ({ children }:EthereumProviderProps) => {
             const newSigner = await provider.getSigner();
             setSigner(newSigner);
         }
+
         initSigner();
     }, []);
 
