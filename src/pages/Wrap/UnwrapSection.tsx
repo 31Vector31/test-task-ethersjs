@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {Button, Paper, Skeleton, Typography} from "@mui/material";
-import {useGetWalletBalance} from "../../utils/hooks/useGetWalletBalance";
 import {useEthereum} from "../../utils/hooks/useEthereum";
 import {useCallback, useMemo, useState} from "react";
 import {useFormatter} from "../../utils/hooks/useFormatter";

@@ -1,6 +1,6 @@
 import {createContext, ReactNode, useEffect, useState} from "react";
 import {getProvider} from "../utils/sundry";
-import {JsonRpcSigner} from "ethers";
+import {BrowserProvider, JsonRpcSigner} from "ethers";
 import {EthereumContextType} from "../types";
 
 const provider = getProvider();
@@ -16,8 +16,10 @@ const EthereumProvider = ({children}: EthereumProviderProps) => {
 
     useEffect(() => {
         async function initSigner() {
-            const newSigner = await provider.getSigner();
-            setSigner(newSigner);
+            if (provider instanceof BrowserProvider) {
+                const newSigner = await provider.getSigner();
+                setSigner(newSigner);
+            }
         }
 
         initSigner();
