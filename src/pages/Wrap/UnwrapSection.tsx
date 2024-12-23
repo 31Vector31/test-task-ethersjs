@@ -47,7 +47,7 @@ const UnwrapSection = ({rerender, setRerender}: UnwrapSectionProps) => {
 
     const formattedAmountWrappedToken = customFormatUnits(amountWrappedToken, wrapContract.token.decimals);
 
-    const wrap = useCallback(async () => {
+    const unwrap = useCallback(async () => {
         notifications.show('Pending transaction', {
             severity: 'info',
             key: "pending",
@@ -92,11 +92,11 @@ const UnwrapSection = ({rerender, setRerender}: UnwrapSectionProps) => {
                     Insufficient balance
                 </Button>);
             default:
-                return (<Button onClick={wrap} variant="contained">
+                return (<Button onClick={unwrap} variant="contained">
                     Unwrap
                 </Button>);
         }
-    }, [amount, connect, formattedAmountWrappedToken, signer, wrap]);
+    }, [amount, connect, formattedAmountWrappedToken, signer, unwrap]);
 
     return (
         <Container>
