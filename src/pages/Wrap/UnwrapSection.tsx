@@ -49,6 +49,11 @@ const UnwrapSection = ({rerender, setRerender}: UnwrapSectionProps) => {
     const formattedAmountWrappedToken = customFormatUnits(amountWrappedToken, wrapContract.token.decimals);
 
     const wrap = useCallback(async () => {
+        notifications.show('Pending', {
+            severity: 'info',
+            key: "pending",
+        });
+
         try {
             const contract = new Contract(wrapContract.address, wrapContract.abi, signer);
             const formattedAmount = customParseUnits(amount, wrapContract.token.decimals);
@@ -59,11 +64,13 @@ const UnwrapSection = ({rerender, setRerender}: UnwrapSectionProps) => {
             setAmount(defaultAmountValue);
             setRerender(!rerender);
 
+            notifications.close("pending");
             notifications.show('Success', {
                 severity: 'success',
                 autoHideDuration: 3000,
             });
         } catch {
+            notifications.close("pending");
             notifications.show('Error', {
                 severity: 'error',
                 autoHideDuration: 3000,
@@ -77,7 +84,7 @@ const UnwrapSection = ({rerender, setRerender}: UnwrapSectionProps) => {
                 return (<Button onClick={connect} variant="contained">
                     Connect wallet
                 </Button>);
-            case (!amount):
+            case (!amount || amount === "0"):
                 return (<Button disabled variant="contained">
                     Enter an amount
                 </Button>);

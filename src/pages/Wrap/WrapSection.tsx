@@ -44,6 +44,11 @@ const WrapSection = ({rerender, setRerender}: WrapSectionProps) => {
     const formattedBalance = customFormatEther(balance);
 
     const wrap = useCallback(async () => {
+        notifications.show('Pending', {
+            severity: 'info',
+            key: "pending",
+        });
+
         try {
             const contract = new Contract(wrapContract.address, wrapContract.abi, signer);
             const formattedAmount = customParseUnits(amount, wrapContract.token.decimals);
@@ -56,11 +61,13 @@ const WrapSection = ({rerender, setRerender}: WrapSectionProps) => {
             setAmount(defaultAmountValue);
             setRerender(!rerender);
 
+            notifications.close("pending");
             notifications.show('Success', {
                 severity: 'success',
                 autoHideDuration: 3000,
             });
         } catch {
+            notifications.close("pending");
             notifications.show('Error', {
                 severity: 'error',
                 autoHideDuration: 3000,
@@ -74,7 +81,7 @@ const WrapSection = ({rerender, setRerender}: WrapSectionProps) => {
                 return (<Button onClick={connect} variant="contained">
                     Connect wallet
                 </Button>);
-            case (!amount):
+            case (!amount || amount === "0"):
                 return (<Button disabled variant="contained">
                     Enter an amount
                 </Button>);
