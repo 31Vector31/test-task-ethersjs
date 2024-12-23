@@ -48,7 +48,7 @@ const UnwrapSection = ({rerender, setRerender}: UnwrapSectionProps) => {
     const formattedAmountWrappedToken = customFormatUnits(amountWrappedToken, wrapContract.token.decimals);
 
     const wrap = useCallback(async () => {
-        notifications.show('Pending', {
+        notifications.show('Pending transaction', {
             severity: 'info',
             key: "pending",
         });
@@ -64,13 +64,13 @@ const UnwrapSection = ({rerender, setRerender}: UnwrapSectionProps) => {
             setRerender(!rerender);
 
             notifications.close("pending");
-            notifications.show('Success', {
+            notifications.show('Transaction was successful', {
                 severity: 'success',
                 autoHideDuration: 3000,
             });
         } catch {
             notifications.close("pending");
-            notifications.show('Error', {
+            notifications.show('Transaction was not successful', {
                 severity: 'error',
                 autoHideDuration: 3000,
             });

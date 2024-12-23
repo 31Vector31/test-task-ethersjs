@@ -44,7 +44,7 @@ const WrapSection = ({rerender, setRerender}: WrapSectionProps) => {
     const formattedBalance = customFormatEther(balance);
 
     const wrap = useCallback(async () => {
-        notifications.show('Pending', {
+        notifications.show('Pending transaction', {
             severity: 'info',
             key: "pending",
         });
@@ -62,13 +62,13 @@ const WrapSection = ({rerender, setRerender}: WrapSectionProps) => {
             setRerender(!rerender);
 
             notifications.close("pending");
-            notifications.show('Success', {
+            notifications.show('Transaction was successful', {
                 severity: 'success',
                 autoHideDuration: 3000,
             });
         } catch {
             notifications.close("pending");
-            notifications.show('Error', {
+            notifications.show('Transaction was not successful', {
                 severity: 'error',
                 autoHideDuration: 3000,
             });

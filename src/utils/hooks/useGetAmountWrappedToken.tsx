@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {getAmountWrappedToken} from "../sundry";
 import {JsonRpcSigner} from "ethers";
 
-export function useGetAmountWrappedToken(signer: JsonRpcSigner, update?: boolean) {
+export function useGetAmountWrappedToken(signer?: JsonRpcSigner | null, update?: boolean) {
     const [amountWrappedToken, setAmountWrappedToken] = useState<bigint | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
