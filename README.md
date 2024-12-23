@@ -1,50 +1,21 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Створіть простий веб-додаток, який дозволяє користувачам пiд'єднати гаманець Metamask, а потім обгорнути та розгорнути нативний токен Ethereum (ETH) у Wrapped Ethereum (WETH) за допомогою смарт-контракту WETH.
+Вимоги
+React: Використовуйте React для створення інтерфейсу користувача.
+Ethereum: Використовуйте бібліотеку ethers.js або web3.js для взаємодії з блокчейн мережею Ethereum.
+Смарт-контракт: Використовуйте стандартний смарт-контракт WETH, розгорнутий у мережі Ethereum.
+MetaMask: Підтримка підключення до MetaMask для виконання транзакцій.
+Функціональність
+Підключення до MetaMask:
+Користувач повинен мати можливість підключитися до свого гаманця MetaMask.
+Баланс ETH та WETH:
+Показуйте поточний баланс ETH та WETH користувача.
+Обгортання ETH у WETH:
+Поле для введення кількості ETH, які користувач хоче обгорнути у WETH.
+Кнопка "Wrap", яка викликає відповідну функцію смарт-контракту для обгортання ETH у WETH.
+Розгортання WETH у ETH:
+Поле для введення кількості WETH, які користувач хоче розгорнути у ETH.
+Кнопка "Unwrap", яка викликає відповідну функцію смарт-контракту для розгортання WETH у ETH.
+Технічні деталі
+React: Створіть новий додаток за допомогою create-react-app.
+Ethers.js: Використовуйте ethers.js для взаємодії з смарт-контрактом WETH.
+Смарт-контракт WETH: Використовуйте адреси та ABI для WETH, наприклад, з mainnet або testnet (Rinkeby, Kovan і т.д.).
