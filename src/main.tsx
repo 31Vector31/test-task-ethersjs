@@ -8,11 +8,11 @@ import '@fontsource/roboto/700.css';
 import App from "./pages/App.tsx";
 import {NotificationsProvider} from '@toolpad/core/useNotifications';
 import EthereumProvider from "./contexts/EthereumProvider.tsx";
-import {AbstractProvider, BrowserProvider} from "ethers";
+import {Eip1193Provider} from "ethers";
 
 declare global {
     interface Window {
-        ethereum?: BrowserProvider | AbstractProvider
+        ethereum?: Eip1193Provider
     }
 }
 

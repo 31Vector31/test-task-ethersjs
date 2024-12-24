@@ -7,7 +7,6 @@ export function getProvider(): BrowserProvider | AbstractProvider {
         alert("MetaMask not installed");
         provider = ethers.getDefaultProvider();
     } else {
-        // @ts-expect-error
         provider = new ethers.BrowserProvider(window.ethereum);
     }
     return provider;
